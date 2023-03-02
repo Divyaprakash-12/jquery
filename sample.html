@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+    body{
+        background-color: aqua;
+    }
+    #form1{
+        text-align: center;
+        color: coral;
+        background-color: rgb(47, 231, 231);
+        margin-top: 70px;
+        margin-left: auto;
+        margin-bottom: 60px;
+        margin-right: auto;
+        width: 50%;
+        font-variant: small-caps;  
+        display: none; 
+    }
+    #form2{
+        text-align: center;
+        color: crimson;
+        background-color: gold;
+        width: 50%;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        font-variant: small-caps;
+        display: none;
+    }
+    p{
+        text-align: center;
+        font-size: x-large;
+        /*font-style: italic;*/
+        font-variant: small-caps;
+
+    }
+</style>
+</head>
+
+<body>
+    <p>toggle effect</p>
+    <button type="button" id="b1"><b>Login</b></button><br><br>
+    <button type="button" id="b2"><b>Registration</b></button>
+    <form action="" name="login" method="get" id="form1">
+        <fieldset>
+            <legend>
+                login
+            </legend>
+            <label>user name</label><br>
+            <input type="text" name="uname" placeholder="enter your name" required><br>
+            <lable>password</lable><br>
+            <input type="password" name="pwd" placeholder="enter your password" required><br>
+            <lable>confirm password</lable><br>
+            <input type="password" name="cpwd" placeholder="confirm your password" required><br><br>
+            <button type="button" onclick="validateform()">submit</button>
+    
+    
+        </fieldset>
+    
+    </form>
+    <form action="" name="login1" method="get" id="form2">
+        <fieldset>
+            <legend >
+                login1
+            </legend>
+            <label>First name</label><br><br>
+            <input type="text" name="fname" placeholder="enter your first name" ><br><br>
+            <label>Last name</label><br><br>
+            <input type="text" name="lname" placeholder="enter your last name"><br><br>
+            <label>Gender</label><br><br>
+            <input type="radio" id="Gender" name="gender" value="male">male<br><br>
+            <input type="radio" id="Gender" name="gender" value="female">female<br><br>
+            <label>date of birth</label><br><br>
+            <input type="date" name="dob" ><br><br>
+            <button type="button" onclick="validateform1()">register</button>         
+        </fieldset>
+    </form>
+    <script src="task2(2).js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#b1").click(function(){
+                $("#form1").toggle()
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#b2").click(function(){
+                $("#form2").toggle()
+            })
+        })
+    </script>
+</body>
+
+
+</html>
