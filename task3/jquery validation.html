@@ -11,27 +11,64 @@
 </head>
 <body>
     <div class="container">
-        <form id="form"action="" method="post">
+        <form id="form"action="" method="post" id="form" name="form">
             <fieldset>
                 <legend>Validation Plugin</legend>
                 <div class="row">
-                    <lable>User Name</lable><br>
-                    <input type="text" id="uname">
+                    <lable for="uname">User Name</lable><br>
+                    <input type="text" id="uname" minlength="2" maxlength="15">
                 </div>
                 <div class="row">
-                    <lable>Password</lable><br>
+                    <lable for="upassword">Password</lable><br>
                     <input type="password" id="password">
                 </div>
                 <div class="row">
-                    <lable>Email</lable><br>
+                    <lable for="uemail">Email</lable><br>
                     <input type="email" id="email">
                 </div>
                 <div class="row">
-                    <lable>Phone no</lable><br>
-                    <input type="number" id="ph_no">
+                    <lable for="uphno">Phone no</lable><br>
+                    <input type="number" id="ph_no"><br><br>
+                </div>
+                <div class="row">
+                    <input class="registerbtn" type="submit" value="Register">
                 </div>
             </fieldset>
         </form>
     </div>
+    <script>
+        $(document).ready(function(){
+            $("#myform").validate({
+                rules :{
+                    'uname': {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 15
+                    },
+                   
+                    'uemail': {
+                        required: true,
+                        email: true,
+                    },
+                    'upassword': {
+                        required: true,
+                        minlength:5
+                    },
+                    'uphno': {
+                        required: true,
+                        maxlength:10,
+                        minlength:10
+                    }
+                },
+                messges :{
+                    'uname': "Please enter a valid User Name.",
+                    'uemail': "Please enter Email in proper format.",
+                    'upassword': "Please enter a Password.",
+                    'uphno': "please enter a correct Phone number",
+                }
+            });
+        }); 
+    </script>
 </body>
+
 </html>
