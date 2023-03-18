@@ -7,67 +7,78 @@
     <title>Jquery Validation</title>
     <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    <style></style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+  
+    <style>
+        legend{
+            text-align: center;
+             /* background-color: -webkit-linear-gradient(to right, #5FC3E4, #E55D87); */
+            color: antiquewhite;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <form id="form"action="" method="post" id="form" name="form">
+        <form action="/task3/result.html" method="post" id="form" name="form">
             <fieldset>
                 <legend>Validation Plugin</legend>
                 <div class="row">
                     <lable for="uname">User Name</lable><br>
-                    <input type="text" id="uname" minlength="2" maxlength="15">
+                    <input type="text" name="uname">
                 </div>
                 <div class="row">
                     <lable for="upassword">Password</lable><br>
-                    <input type="password" id="password">
+                    <input type="password" name="password">
                 </div>
                 <div class="row">
                     <lable for="uemail">Email</lable><br>
-                    <input type="email" id="email">
+                    <input type="email" name="email">
                 </div>
                 <div class="row">
                     <lable for="uphno">Phone no</lable><br>
-                    <input type="number" id="ph_no"><br><br>
+                    <input type="text" name="ph_no"><br><br>
                 </div>
                 <div class="row">
-                    <input class="registerbtn" type="submit" value="Register">
+                    <input type="submit" value="Register">
                 </div>
             </fieldset>
         </form>
     </div>
     <script>
-        $(document).ready(function(){
-            $("#myform").validate({
+      
+            $(document).ready(function(){
+            $("#form").validate({
                 rules :{
-                    'uname': {
+                    uname: {
                         required: true,
                         minlength: 2,
-                        maxlength: 15
+                        maxlength: 15,
+                        
                     },
-                   
-                    'uemail': {
+                   uemail: {
                         required: true,
                         email: true,
                     },
-                    'upassword': {
+                    upassword: {
                         required: true,
                         minlength:5
                     },
-                    'uphno': {
+                    uphno: {
                         required: true,
                         maxlength:10,
                         minlength:10
                     }
                 },
-                messges :{
-                    'uname': "Please enter a valid User Name.",
-                    'uemail': "Please enter Email in proper format.",
-                    'upassword': "Please enter a Password.",
-                    'uphno': "please enter a correct Phone number",
+                messages :{
+                    uname:{
+                        required:"Please enter a valid username with alphabets .",
+                        maxlength:"Username should not exeed 12 characters",
+                        minlength:"Username should be atleast 2 characters"
+                          }
                 }
             });
         }); 
+        
     </script>
 </body>
 
