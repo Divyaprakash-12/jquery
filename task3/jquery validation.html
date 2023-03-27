@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,35 +9,90 @@
     <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
-  
+
     <style>
-        legend{
-            text-align: center;
-             /* background-color: -webkit-linear-gradient(to right, #5FC3E4, #E55D87); */
-            color: antiquewhite;
+        form {
+            border-radius: 7px red solid;
+            margin-top: 60px;
+            margin-left: 250px;
+            border-radius: 4px pink solid;
+            width: 300px;
+            background: #4B79A1;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #283E51, #4B79A1);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #283E51, #4B79A1);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        h3 {
+            margin-top: 0px;
+            /* background-color: -webkit-linear-gradient(to right, #5FC3E4, #E55D87); */
+            color: rgb(237, 218, 8);
+            background: #bdc3c7;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .row lable {
+            color: cyan;
+        }
+
+        .row input {
+            border: solid 2px yellow;
+            color: deeppink;
+        }
+
+        .row input::placeholder {
+            color: rgb(26, 255, 0);
+        }
+
+        body {
+            width: 250px;
+            background: #FC466B;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3F5EFB, #FC466B);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .error {
+            color: red;
+            font-family: sans-serif;
+            font-size: 15px;
         }
     </style>
 </head>
+
 <body>
+
     <div class="container">
-        <form action="/task3/result.html" method="post" id="form" name="form">
+        <form action="task3\result.html" method="post" id="form" name="form">
             <fieldset>
-                <legend>Validation Plugin</legend>
+                <h3>
+                    <center>Validation Plugin</center>
+                </h3>
                 <div class="row">
-                    <lable for="uname">User Name</lable><br>
-                    <input type="text" name="uname">
+                    <lable>User Name :</lable><br>
+                    <input type="text" name="uname" placeholder="enter a name">
+
                 </div>
                 <div class="row">
-                    <lable for="upassword">Password</lable><br>
-                    <input type="password" name="password">
+                    <lable>Password :</lable><br>
+                    <input type="password" name="upassword" placeholder="enter a password">
                 </div>
                 <div class="row">
-                    <lable for="uemail">Email</lable><br>
-                    <input type="email" name="email">
+                    <lable>Email :</lable><br>
+                    <input type="email" name="uemail" placeholder="enter a email">
                 </div>
                 <div class="row">
-                    <lable for="uphno">Phone no</lable><br>
-                    <input type="text" name="ph_no"><br><br>
+                    <lable>Phone no :</lable><br>
+                    <input type="text" name="uphno" placeholder="enter a phone number"><br><br>
                 </div>
                 <div class="row">
                     <input type="submit" value="Register">
@@ -45,40 +101,60 @@
         </form>
     </div>
     <script>
-      
-            $(document).ready(function(){
+
+        $(document).ready(function () {
             $("#form").validate({
-                rules :{
+                rules: {
                     uname: {
                         required: true,
                         minlength: 2,
                         maxlength: 15,
-                        
+                        pattern: /^[a-zA-Z]+$/
+
                     },
-                   uemail: {
+
+                    uemail: {
                         required: true,
                         email: true,
                     },
                     upassword: {
                         required: true,
-                        minlength:5
+                        minlength: 4,
+                        maxlength: 12,
+                        pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#@$])/
                     },
                     uphno: {
                         required: true,
-                        maxlength:10,
-                        minlength:10
+                        pattern: /^[0-9]{3}[-][0-9]{3}[-][0-9]{4}$/
                     }
                 },
-                messages :{
-                    uname:{
-                        required:"Please enter a valid username with alphabets .",
-                        maxlength:"Username should not exeed 12 characters",
-                        minlength:"Username should be atleast 2 characters"
-                          }
+                messages: {
+                    uname: {
+                        required: "Please enter a valid username with alphabets ",
+                        maxlength: "Username should not exeed 15 characters",
+                        minlength: "Username should be atleast 2 characters",
+                        pattern: "Invalid Pattern"
+
+                    },
+                    uemail: {
+                        required: "Please enter a valid email pattern",
+                    },
+                    upassword: {
+                        required: "Please enter a valid password with required characters",
+                        maxlength: "Username should not exeed 12 characters",
+                        minlength: "Username should be atleast 4 characters",
+                        pattern: "Invalid Pattern"
+
+                    },
+                    uphno: {
+                        required: "Please enter correct phone number pattern",
+                        pattern: "Invalid Pattern"
+                    },
+
                 }
             });
-        }); 
-        
+        });
+
     </script>
 </body>
 
